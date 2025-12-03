@@ -89,13 +89,12 @@ body {
     width: 100%;
     height: 100%;
     z-index: 1;
-    overflow: hidden;
 }
 
+/* 让A-Frame自己处理尺寸，不要强制覆盖 */
 #ar-container a-scene {
     width: 100%;
     height: 100%;
-    display: block;
 }
 
 /* ==================== UI覆盖层 ==================== */
@@ -124,12 +123,11 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 60px;
+    height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 33px;                          /* 基础33px */
-    padding: calc(20px + 2vw);              /* 或按比例：20px + 2% viewport宽度 */
+    padding: 33px;
     background: transparent;
     z-index: 100;
 }
@@ -202,10 +200,9 @@ body {
     transform: translateX(-50%);
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 90%;           /* ← 新增：占据卡片90%宽度 */
-    max-width: 500px;     /* ← 新增：最大宽度限制 */
-    justify-content: space-between;  /* ← 改：两端对齐 */
+    width: calc(100% - 60px);
+    max-width: 100%;
+    justify-content: space-between;
 }
 
 .main-dish {
@@ -250,6 +247,10 @@ body {
     margin-top: 100px;
     text-align: center;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .dish-name {
@@ -258,7 +259,7 @@ body {
     font-size: 16px;
     font-weight: 590;
     line-height: 22px;
-    margin-bottom: 0;  /* ← 删除底部间距 */
+    margin: 0;
 }
 
 .dish-price {
@@ -286,7 +287,7 @@ body {
     background: #F7F7F7;
     color: #000;
     font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
-    font-variant: small-caps; 
+    font-variant: small-caps;
     font-size: 16px;
     font-weight: 450;
     cursor: pointer;
@@ -331,8 +332,7 @@ body {
 /* ==================== 响应式设计 ==================== */
 @media (max-width: 480px) {
     .main-header {
-        height: 50px;
-        padding: 0 16px;
+        padding: 33px 20px;
     }
 
     .header-logo {
@@ -351,14 +351,14 @@ body {
 
     .bottom-card {
         border-radius: 40px 40px 0 0;
-        border-top: 2.5px solid #FFF;  /* 稍微细一点 */
+        border-top: 2.5px solid #FFF;
         height: 220px;
         padding: 16px 16px 25px;
     }
 
     .dish-images {
         top: -70px;
-        gap: 15px;
+        width: calc(100% - 40px);
     }
 
     .main-dish {
@@ -433,10 +433,17 @@ body {
     }
 }
 
+/* 中等屏幕 */
+@media (min-width: 375px) {
+    .main-header {
+        padding: 33px;
+    }
+}
+
+/* 平板 */
 @media (min-width: 768px) {
     .main-header {
-        height: 70px;
-        padding: 0 40px;
+        padding: 40px;
     }
 
     .header-logo {
@@ -451,5 +458,17 @@ body {
     .burger-menu span {
         width: 28px;
         height: 3px;
+    }
+
+    .dish-images {
+        width: 90%;
+        max-width: 550px;
+    }
+}
+
+/* 桌面 */
+@media (min-width: 1024px) {
+    .main-header {
+        padding: 50px;
     }
 }
