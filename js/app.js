@@ -83,6 +83,19 @@ function startARExperience() {
     const uiOverlay = document.getElementById('ui-overlay');
     uiOverlay.classList.add('active');
     
+    setTimeout(() => {
+        const video = document.querySelector('video');
+        if (video) {
+            video.style.width = '100%';
+            video.style.height = '100%';
+            video.style.objectFit = 'cover';
+            video.style.position = 'absolute';
+            video.style.top = '0';
+            video.style.left = '0';
+            console.log('Video element adjusted');
+        }
+    }, 1000);
+    
     // 初始化AR场景
     initARScene();
     
