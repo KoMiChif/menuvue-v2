@@ -75,31 +75,15 @@ function requestCameraPermission() {
 function startARExperience() {
     console.log('Starting AR experience...');
     
-    // 显示AR容器
     const arContainer = document.getElementById('ar-container');
     arContainer.style.display = 'block';
     
-    // 显示UI覆盖层
     const uiOverlay = document.getElementById('ui-overlay');
     uiOverlay.classList.add('active');
     
-    setTimeout(() => {
-        const video = document.querySelector('video');
-        if (video) {
-            video.style.width = '100%';
-            video.style.height = '100%';
-            video.style.objectFit = 'cover';
-            video.style.position = 'absolute';
-            video.style.top = '0';
-            video.style.left = '0';
-            console.log('Video element adjusted');
-        }
-    }, 1000);
+    // 让AR.js自己处理video，不要干预
     
-    // 初始化AR场景
     initARScene();
-    
-    // 绑定UI事件
     bindUIEvents();
 }
 
