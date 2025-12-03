@@ -15,7 +15,7 @@
     
     <!-- AR.js and A-Frame -->
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 </head>
 <body>
     <!-- ==================== 启动画面 ==================== -->
@@ -38,9 +38,16 @@
                 <!-- 3D模型资源将通过JavaScript动态加载 -->
             </a-assets>
             
-            <a-marker id="food-marker" preset="hiro">
+            <a-nft
+                id="food-marker"
+                type="nft"
+                url="./assets/nft/Group_52"
+                smooth="true"
+                smoothCount="10"
+                smoothTolerance=".01"
+                smoothThreshold="5">
                 <!-- 3D模型将动态加载到这里 -->
-            </a-marker>
+            </a-nft>
             
             <a-entity camera></a-entity>
         </a-scene>
