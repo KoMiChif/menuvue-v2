@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>MenuVue - AR Menu Experience</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="./css/main.css">
+    
+    <!-- AR.js and A-Frame -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
+</head>
+<body>
+    <!-- ==================== 启动画面 ==================== -->
+    <div id="splash-screen" class="active">
+        <div class="logo-container">
+            <h1 class="brand-logo">MenuVue<span class="cube-icon">📦</span></h1>
+        </div>
+    </div>
+
+    <!-- ==================== AR容器 ==================== -->
+    <div id="ar-container">
+        <a-scene 
+            embedded 
+            arjs="sourceType: webcam; debugUIEnabled: false; trackingMethod: best;"
+            vr-mode-ui="enabled: false"
+            device-orientation-permission-ui="enabled: false"
+            renderer="logarithmicDepthBuffer: true;">
+            
+            <a-assets timeout="10000">
+                <!-- 3D模型资源将通过JavaScript动态加载 -->
+            </a-assets>
+            
+            <a-marker id="food-marker" preset="hiro">
+                <!-- 3D模型将动态加载到这里 -->
+            </a-marker>
+            
+            <a-entity camera></a-entity>
+        </a-scene>
+    </div>
+
+    <!-- ==================== UI覆盖层 ==================== -->
+    <div id="ui-overlay">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-logo">MenuVue</div>
+            <button class="burger-menu" id="burger-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </header>
+
+        <!-- 底部信息卡片 -->
+        <div class="bottom-card">
+            <!-- 菜品图片区域 -->
+            <div class="dish-images">
+                <div class="side-dish left">
+                    <img src="./assets/images/dishes/dish-left.png" alt="Previous dish">
+                </div>
+                <div class="main-dish">
+                    <img src="./assets/images/dishes/polo-main.png" alt="PoLo">
+                </div>
+                <div class="side-dish right">
+                    <img src="./assets/images/dishes/dish-right.png" alt="Next dish">
+                </div>
+            </div>
+
+            <!-- 菜品信息 -->
+            <div class="dish-info">
+                 <h2 class="dish-name">PoLo 新疆手抓饭 <span class="dish-price">· $ 21</span></h2>
+            </div>
+
+            <!-- 按钮组 -->
+            <div class="action-buttons">
+                <button class="btn-table" id="my-table-btn">My Table</button>
+                <button class="btn-add" id="add-btn">Add+</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="./js/app.js"></script>
+</body>
+</html>
